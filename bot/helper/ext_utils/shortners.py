@@ -38,8 +38,8 @@ def short_url(longurl, attempt=0):
             return cget('POST', "https://api-ssl.bit.ly/v4/shorten", json={"long_url": longurl}, headers=headers).json()["link"]
         elif "ouo.io" in _shortener:
             return cget('GET', f'http://ouo.io/api/{_shortener_api}?s={longurl}', verify=False).text
-        elif "cutt.ly" in _shortener:
-            return cget('GET', f'http://cutt.ly/api/api.php?key={_shortener_api}&short={longurl}').json()['url']['shortLink']
+        elif "shrinkforearn.in" in _shortener:
+            return cget('GET', f'http://shrinkforearn.in/api?api={_shortener_api}&url={longurl}&alias=CustomAlias').json()['url']['shortLink']
         else:
             res = cget('GET', f'https://{_shortener}/api?api={_shortener_api}&url={quote(longurl)}').json()
             shorted = res['shortenedUrl']
