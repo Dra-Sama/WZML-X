@@ -39,7 +39,7 @@ def short_url(longurl, attempt=0):
         elif "ouo.io" in _shortener:
             return cget('GET', f'http://ouo.io/api/{_shortener_api}?s={longurl}', verify=False).text
         elif "shrinkforearn.in" in _shortener:
-            return cget('GET', f'http://shrinkforearn.in/api?api={_shortener_api}&url={longurl}&alias=CustomAlias').json()['url']['shortLink']
+            return cget('GET', f'http://shrinkforearn.in/api?api={_shortener_api}&url={longurl}&{random() * 1000}').json()['url']['shortLink']
         else:
             res = cget('GET', f'https://{_shortener}/api?api={_shortener_api}&url={quote(longurl)}').json()
             shorted = res['shortenedUrl']
