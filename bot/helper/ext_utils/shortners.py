@@ -1,4 +1,3 @@
-import string
 from base64 import b64encode
 from random import choice, random, randrange
 from time import sleep
@@ -9,12 +8,17 @@ from urllib3 import disable_warnings
 
 from bot import LOGGER, shorteners_list
 
-
+import random
+import string
+ 
 def generate_random_string(length):
+    # Get all the ASCII letters in lowercase and uppercase
     letters = string.ascii_letters
+    # Randomly choose characters from letters for the given length of the string
     random_string = ''.join(random.choice(letters) for i in range(length))
     return random_string
-
+ 
+# Example usage: generate a random string of length 10
 random_string = generate_random_string(10)
 
 def short_url(longurl, attempt=0):
