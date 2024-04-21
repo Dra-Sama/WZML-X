@@ -8,10 +8,6 @@ from urllib3 import disable_warnings
 
 from bot import LOGGER, shorteners_list
 
-import random
-import string
-
-
 def short_url(longurl, attempt=0):
     if not shorteners_list:
         return longurl
