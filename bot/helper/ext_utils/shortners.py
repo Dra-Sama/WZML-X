@@ -9,6 +9,7 @@ from urllib3 import disable_warnings
 
 from bot import LOGGER, shorteners_list
 
+
 def generate_random_string(length):
     letters = string.ascii_letters
     random_string = ''.join(random.choice(letters) for i in range(length))
