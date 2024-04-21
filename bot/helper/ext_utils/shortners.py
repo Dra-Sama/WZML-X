@@ -1,3 +1,4 @@
+import string
 from base64 import b64encode
 from random import choice, random, randrange
 from time import sleep
@@ -8,6 +9,12 @@ from urllib3 import disable_warnings
 
 from bot import LOGGER, shorteners_list
 
+def generate_random_string(length):
+    letters = string.ascii_letters
+    random_string = ''.join(random.choice(letters) for i in range(length))
+    return random_string
+
+random_string = generate_random_string(10)
 
 def short_url(longurl, attempt=0):
     if not shorteners_list:
@@ -39,7 +46,7 @@ def short_url(longurl, attempt=0):
         elif "ouo.io" in _shortener:
             return cget('GET', f'http://ouo.io/api/{_shortener_api}?s={longurl}', verify=False).text
         elif "shrinkforearn.in" in _shortener:
-            return cget('GET', f'https://shrinkforearn.in/api?api={_shortener_api}&url={longurl}&alias={random() * 1000}').json()['url']['shortLink']
+            return cget('GET', f'https://shrinkforearn.in/api?api={_shortener_api}&url={longurl}&alias={random_string}').json()['url']['shortLink']
         else:
             res = cget('GET', f'https://{_shortener}/api?api={_shortener_api}&url={quote(longurl)}').json()
             shorted = res['shortenedUrl']
